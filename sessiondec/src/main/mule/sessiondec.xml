@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<mule xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd">
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="dfeb3606-5ac9-4b7b-82a9-2ac8cf5ce331" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
 	<flow name="sessiondecFlow" doc:id="9aed273a-a4e0-4de5-bff3-066cae8ec26c" >
+		<http:listener doc:name="Listener" doc:id="a4777acf-51bc-47d6-8242-ca3e4cc73b13" config-ref="HTTP_Listener_config" path="/demo"/>
 		<logger level="INFO" doc:name="Logger" doc:id="d2a588fd-4de0-421d-aec8-ce01fdcdd201" message="CI Demo"/>
 	</flow>
 </mule>
